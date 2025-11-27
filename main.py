@@ -15,7 +15,7 @@ class Personaje:
         return f"Personaje(nombre={self.nombre}, talla={self.talla}, nivel_fuerza={self.nivel_fuerza})"
 
     def saludar(self):
-        return f"Hola, mi nombre es {self.nombre}, y mi nivel de fuerza es: {self.nivel_fuerza}."
+        return f"Hola, mi nombre es {self.nombre}, y mi nivel de fuerza es: {self.get_nivel_fuerza()}."
     
     def get_nivel_fuerza(self):
         return self.__nivel_fuerza
