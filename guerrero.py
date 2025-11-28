@@ -1,4 +1,5 @@
-from main import Personaje
+from personaje import Personaje
+
 class Guerrero(Personaje):
     def __init__(self, nombre, talla, nivel_fuerza):
         super().__init__(nombre, talla, nivel_fuerza)

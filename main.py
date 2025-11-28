@@ -4,38 +4,36 @@
 
 # if __name__ == "__main__":
 #     main()
-
-class Personaje:
-    def __init__(self, nombre, talla, nivel_fuerza):
-        self.nombre = nombre
-        self.talla = talla
-        self.__nivel_fuerza = nivel_fuerza
-
-    def __str__(self):
-        return f"Personaje(nombre={self.nombre}, talla={self.talla}, nivel_fuerza={self.nivel_fuerza})"
-
-    def saludar(self):
-        return f"Hola, mi nombre es {self.nombre}, y mi nivel de fuerza es: {self.get_nivel_fuerza()}."
-    
-    def get_nivel_fuerza(self):
-        return self.__nivel_fuerza
-    
-    def set_nivel_fuerza(self, nuevo_nivel):
-        if nuevo_nivel >= 0:
-            self.__nivel_fuerza = nuevo_nivel
-        else:
-            print("El nivel de fuerza no puede ser negativo.")
-
-
-goku = Personaje("Goku", "1.75m", 9001)
-#print(goku.__nivel_fuerza)
-print(goku.get_nivel_fuerza())
-goku.set_nivel_fuerza(10000)
-print(goku.get_nivel_fuerza())
-# print(goku.saludar())
-# vegeta = Personaje("Vegeta", "1.65m", 8500)
-# print(vegeta.saludar())
+from guerrero import Guerrero
+from saiyajin import Saiyajin, SaiyajinProtocol
+from personaje import Personaje
+from torneo import Torneo
 
 # personajes = [goku, vegeta]
 # for personaje in personajes:
 #     print(personaje)
+
+goku = Saiyajin("Goku", "1.75m", 9001, "Planeta Vegeta", cola=False)
+#print(goku.saludar())
+vegeta = Saiyajin("Vegeta", "1.65m", 8500, "Planeta Vegeta", cola=True)
+#print(vegeta.saludar())
+krilin = Guerrero("Krillin", "1.60m", 3000)
+#print(krilin.saludar())
+bulma = Personaje("Bulma", "1.70m", 10)
+
+guerreros: list[SaiyajinProtocol] = [goku, vegeta] #krilin
+for guerrero in guerreros:
+    print(guerrero.saludar())
+
+#print(goku.atacar())
+# print(vegeta.atacar())
+# print(krilin.atacar())
+#print(goku.transformar_super_saiyajin())
+#print(krilin.transformar_super_saiyajin())  # This will raise an AttributeError
+
+torneo_dragon_ball = Torneo("Torneo de Dragon Ball 1")
+torneo_dragon_ball.participantes = [goku, vegeta, krilin, bulma]
+print("=====================================")
+print(torneo_dragon_ball.titulo)
+print("Lista de participantes (solo peleadores con nivel de fuerza > 1000):")
+print(torneo_dragon_ball.listar_participantes())
